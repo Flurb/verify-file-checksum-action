@@ -1,27 +1,25 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 const crypto = require('crypto');
-const fs = require('fs')
+const fetch = require('node-fetch');
 
 try {
-    // Create a Hash based on the given algorithm.
-    const hashAccordingGivenAlgorithm = crypto.createHash(core.getInput('algorithm'));
+    // Fetch the given file
+    fetch(core.getInput('file'))
+        // Create a Buffer, because we need that in the Crypto update function
+        .then(res => res.buffer())
+        .then(buffer => {
+            const hashAccordingGivenAlgorithm = crypto.createHash(core.getInput('algorithm'));
+            hashAccordingGivenAlgorithm.update(buffer);
+            const calculatedChecksum = hashAccordingGivenAlgorithm.digest('hex');
 
-    // Calculating checksum for given file.
-    const streamGivenFile = fs.createReadStream(core.getInput('file'));
-    const calculatedChecksum = hashAccordingGivenAlgorithm.update(streamGivenFile).digest('hex');
-
-    const expectedChecksum = core.getInput('checksum');
-
-    console.log(`Calculated checksum: ${calculatedChecksum}`);
-    console.log(`Expected checksum: ${expectedChecksum}`);
-
-    if (calculatedChecksum == expectedChecksum) {
-        core.setOutput("verify-result", "Checksums are equal");
-    } else {
-        core.setOutput("verify-result", "Checksums are not equal");
-        core.setFailed(error.message);
-    }
+            if (calculatedChecksum == core.getInput('checksum')) {
+                core.setOutput("verify-result", "Checksums are equal");
+            } else {
+                core.setOutput("verify-result", "Checksums are not equal");
+                core.setFailed(error.message);
+            }
+        })
 } catch (error) {
     core.setFailed(error.message);
 }
