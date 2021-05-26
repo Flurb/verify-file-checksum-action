@@ -1,0 +1,19 @@
+name: 'Verify File Checksum'
+description: 'Verify the checksum of a given file. If it passes, the Github Action passes.'
+inputs:
+  file:
+    description: 'The file to check.'
+    required: true
+  checksum:
+    description: 'The expected checksum of the given file.'
+    required: true
+  algorithm:
+    description: 'The algorithm that has been used for calculating the checksum.'
+    required: true
+    default: 'MD5'
+outputs:
+  verify-result:
+    description: 'Does the checksum match with the given file.'
+runs:
+  using: 'node12'
+  main: 'index.js'
