@@ -17,7 +17,7 @@ try {
                 core.setOutput("verify-result", "Checksums are equal");
             } else {
                 core.setOutput("verify-result", "Checksums are not equal");
-                core.setFailed(error.message);
+                core.setFailed("Checksums are not equal");
             }
         })
 } catch (error) {
