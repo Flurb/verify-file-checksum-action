@@ -25,9 +25,9 @@ Does the checksum match with the given file.
 ## Example usage
 
 ```yaml
-uses: actions/hello-world-javascript-action@v1.1
+uses: actions/verify-file-checksum-action@v1
 with:
-  file: 'file://assets.iec.ch/public/tc57/IEC_61850-6.2018.SCL.2007B4.full.zip'
+  file: 'file://example.com/file.zi['
   checksum: 'd61da94836ff974fbd781ad1bc967039'
   algorithm: 'MD5'
 ```
