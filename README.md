@@ -27,7 +27,7 @@ Does the checksum match with the given file.
 ```yaml
 uses: actions/verify-file-checksum-action@v1
 with:
-  file: 'file://example.com/file.zi['
+  file: 'file://example.com/file.zip'
   checksum: 'd61da94836ff974fbd781ad1bc967039'
   algorithm: 'MD5'
 ```
