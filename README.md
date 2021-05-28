@@ -25,9 +25,9 @@ Does the checksum match with the given file.
 ## Example usage
 
 ```yaml
-uses: actions/verify-file-checksum-action@v1
+uses: Flurb/verify-file-checksum-action@v1
 with:
   file: 'file://example.com/file.zip'
-  checksum: 'd61da94836ff974fbd781ad1bc967039'
+  checksum: 'd61da94811ff974fbd781ad1b396a03b'
   algorithm: 'MD5'
 ```
