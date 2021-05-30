@@ -1,12 +1,12 @@
-# Verify File Checksum action
+# 'Verify File Checksum' Github Action
 
-This action verifies the checksum of a given file. If it passes, the Github Action passes.
+This action verifies the checksum of a given (remote) file. If the check passes, the Github Action passes.
 
 ## Inputs
 
-### `file`
+### `fileUrl`
 
-**Required** The file to check. If it's an URL, use the [`file:`](https://en.wikipedia.org/wiki/File_URI_scheme) protocol.
+**Required** The URL of the file to check.
 
 ### `checksum`
 

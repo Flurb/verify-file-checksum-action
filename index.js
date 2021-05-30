@@ -5,7 +5,7 @@ const fetch = require('node-fetch');
 
 try {
     // Fetch the given file
-    fetch(core.getInput('file'))
+    fetch(core.getInput('fileUrl'))
         // Create a Buffer, because we need that in the Crypto update function
         .then(res => res.buffer())
         .then(buffer => {
