@@ -1,5 +1,8 @@
 name: 'Verify File Checksum'
 description: 'This action verifies the checksum of a given (remote) file. If the check passes, the Github Action passes.'
+branding: 
+  icon: file
+  color: blue
 inputs:
   fileUrl:
     description: 'The URL of the file to check.'
